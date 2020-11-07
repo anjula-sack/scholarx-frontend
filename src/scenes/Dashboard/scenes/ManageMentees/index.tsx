@@ -9,7 +9,7 @@ import {
   Modal,
 } from 'antd';
 import { WarningOutlined } from '@ant-design/icons';
-import { Mentee } from './interfaces';
+import { Mentee } from '../../../../interfaces';
 import { useParams } from 'react-router';
 import axios, { AxiosResponse } from 'axios';
 
@@ -42,7 +42,7 @@ function ManageMentees() {
       });
   }, []);
 
-  const removeMentee = (id) => {
+  const removeMentee = (id: number) => {
     confirm({
       title: 'Do you want to remove this mentee?',
       icon: <WarningOutlined />,

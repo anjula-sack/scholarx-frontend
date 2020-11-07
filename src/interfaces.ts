@@ -36,3 +36,9 @@ export interface Application {
   application: string;
   prerequisites: string;
 }
+
+export interface Mentee {
+  profile: Profile;
+  state: string;
+  submissionUrl: string;
+}
