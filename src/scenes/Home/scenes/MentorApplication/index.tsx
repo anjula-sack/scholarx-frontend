@@ -17,6 +17,7 @@ import { Mentor, Application } from '../../../../interfaces';
 import mainStyles from '../../styles.css';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import NavigationBar from '../../components/NavigationBar';
+import { API_URL } from '../../../../constants';
 
 const { TextArea } = Input;
 const { Title } = Typography;
@@ -34,7 +35,7 @@ function MentorApplication() {
       prerequisites: values.prerequisites,
     };
     axios
-      .post(`http://localhost:8080/programs/${programId}/mentor`, application, {
+      .post(`${API_URL}/programs/${programId}/mentor`, application, {
         withCredentials: true,
       })
       .then((result: AxiosResponse<Mentor>) => {

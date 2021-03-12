@@ -16,6 +16,7 @@ import axios, { AxiosResponse } from 'axios';
 import { Mentor, Application } from '../../../../interfaces';
 import mainStyles from '../../styles.css';
 import NavigationBar from '../../components/NavigationBar';
+import { API_URL } from '../../../../constants';
 
 const { TextArea } = Input;
 const { Title } = Typography;
@@ -28,7 +29,7 @@ function EditMentorApplication() {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`http://localhost:8080/programs/${programId}/mentor`, {
+      .get(`${API_URL}/programs/${programId}/mentor`, {
         withCredentials: true,
       })
       .then((result: AxiosResponse<Mentor>) => {
@@ -58,11 +59,9 @@ function EditMentorApplication() {
       prerequisites: values.prerequisites,
     };
     axios
-      .put(
-        `http://localhost:8080/programs/${programId}/application`,
-        application,
-        { withCredentials: true }
-      )
+      .put(`${API_URL}/programs/${programId}/application`, application, {
+        withCredentials: true,
+      })
       .then((result: AxiosResponse<Mentor>) => {
         if (result.status == 200) {
           setIsLoading(false);

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { UserContext } from '../../../../index';
 import { Profile } from '../../../../interfaces';
 import logo from '../../scholarx.png';
+import { API_URL } from '../../../../constants';
 
 const NavigationBar = () => {
   const user: Partial<Profile | null> = useContext(UserContext);
@@ -17,11 +18,11 @@ const NavigationBar = () => {
       {user != null ? (
         <Avatar src={user.imageUrl} className={styles.loginComponents} />
       ) : (
-        <Link to={'/sign-in'}>
+        <a href={`${API_URL}/oauth2/authorization/linkedin`}>
           <Button type="primary" className={styles.loginComponents}>
             Sign In
           </Button>
-        </Link>
+        </a>
       )}
     </div>
   );
